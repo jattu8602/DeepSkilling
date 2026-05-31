@@ -30,20 +30,25 @@ flowchart LR
 ---
 ### Exercise 2 - E-commerce Search Function
 
-#### Big O Complexity Graph
+#### Big O Complexity Comparison
 ```mermaid
-quadrantChart
-    title Algorithm Performance
-    x-axis "Slow" --> "Fast"
-    y-axis "Bad" --> "Good"
-    quadrant-1 "Sweet Spot"
-    quadrant-2 "Fast but not ideal"
-    quadrant-3 "Avoid"
-    quadrant-4 "Slow but reliable"
-    "Binary Search O(log n)": [0.85, 0.85]
-    "Linear Search O(n)": [0.4, 0.5]
-    "Bubble Sort O(n²)": [0.2, 0.2]
-    "Quick Sort O(n log n)": [0.7, 0.75]
+graph TD
+    subgraph Legend
+        L1["Faster is better (right side)"]
+        L2["Lower is better (bottom side)"]
+    end
+    
+    subgraph Algorithms
+        BS["Binary Search O(log n) - Fastest"] --> |"n=1000 → ~10 steps"| OK1["✓"]
+        QS["Quick Sort O(n log n) - Fast"] --> |"n=1000 → ~10,000 steps"| OK2["✓"]
+        LS["Linear Search O(n) - Medium"] --> |"n=1000 → ~500 steps avg"| OK3["⚠"]
+        BUB["Bubble Sort O(n²) - Slowest"] --> |"n=1000 → ~1,000,000 steps"| BAD["✗"]
+    end
+    
+    style BS fill:#090,color:#fff
+    style QS fill:#690,color:#fff
+    style LS fill:#990,color:#fff
+    style BUB fill:#900,color:#fff
 ```
 
 #### Linear vs Binary Search
@@ -76,29 +81,36 @@ flowchart TD
 #### Bubble Sort vs Quick Sort
 ```mermaid
 graph TD
-    subgraph Bubble Sort O(n²)
-        A["[5, 3, 8, 1]"] --> A1["Compare 5>3 → swap → [3,5,8,1]"]
-        A1 --> A2["Compare 5<8 → no swap → [3,5,8,1]"]
-        A2 --> A3["Compare 8>1 → swap → [3,5,1,8]"]
+    subgraph Bubble Sort O(n^2)
+        A["(5, 3, 8, 1)"] --> A1["Compare 5 > 3 → swap → (3, 5, 8, 1)"]
+        A1 --> A2["Compare 5 < 8 → no swap → (3, 5, 8, 1)"]
+        A2 --> A3["Compare 8 > 1 → swap → (3, 5, 1, 8)"]
         A3 --> A4["Repeat passes until sorted"]
-        A4 --> A5["n passes × n comparisons = O(n²)"]
+        A4 --> A5["n passes x n comparisons = O(n^2)"]
     end
     
     subgraph Quick Sort O(n log n)
-        B["[5, 3, 8, 1, 2]"] --> B1["Pick pivot (e.g., 5)"]
-        B1 --> B2["Partition: [3,1,2] < 5 < [8]"]
-        B2 --> B3["Recursively sort left & right"]
-        B3 --> B4["Divide & conquer: O(n log n)"]
+        B["(5, 3, 8, 1, 2)"] --> B1["Pick pivot (e.g., 5)"]
+        B1 --> B2["Partition: (3, 1, 2) below 5, (8) above 5"]
+        B2 --> B3["Recursively sort left and right"]
+        B3 --> B4["Divide and conquer: O(n log n)"]
     end
 ```
 
 #### Sorting Algorithm Performance
 ```mermaid
-xychart-beta
-    title "Sorting Algorithm Time Complexity"
-    x-axis ["Bubble", "Insertion", "Quick", "Merge"]
-    y-axis "Comparisons (log scale)" 0 --> 10000
-    bar [10000, 2500, 100, 100]
+graph LR
+    subgraph "Comparisons for n=100 (lower is better)"
+        BUB["Bubble Sort<br/>~10,000 steps"] --> BAD["✗ Worst"]
+        INS["Insertion Sort<br/>~2,500 steps"] --> OK3["⚠ Medium"]
+        QCK["Quick Sort<br/>~100 steps"] --> GOOD["✓ Best"]
+        MRG["Merge Sort<br/>~100 steps"] --> GOOD2["✓ Best"]
+    end
+    
+    style BUB fill:#900,color:#fff
+    style INS fill:#990,color:#fff
+    style QCK fill:#090,color:#fff
+    style MRG fill:#090,color:#fff
 ```
 
 ---
@@ -189,12 +201,18 @@ flowchart TD
 ```
 
 ```mermaid
-xychart-beta
-    title "Comparisons: Linear vs Binary Search (n=1000)"
-    x-axis ["Best Case", "Average", "Worst Case"]
-    y-axis "Comparisons" 0 --> 1000
-    bar [1, 500, 1000]
-    bar [1, 10, 10]
+graph LR
+    subgraph "Linear Search O(n)"
+        L1["Best: 1 comparison"] --> L2["Avg: ~500 comparisons"]
+        L2 --> L3["Worst: 1000 comparisons"]
+    end
+    subgraph "Binary Search O(log n)"
+        B1["Best: 1 comparison"] --> B2["Avg: ~10 comparisons"]
+        B2 --> B3["Worst: ~10 comparisons (log2 1000)"]
+    end
+    
+    style L3 fill:#900,color:#fff
+    style B3 fill:#090,color:#fff
 ```
 
 ---
@@ -349,11 +367,11 @@ classDiagram
 
 ```mermaid
 flowchart LR
-    A["new Computer.Builder()"] --> B[.setCPU'i7']
-    B --> C[.setRAM'16GB']
-    C --> D[.setStorage'512GB SSD']
-    D --> E[.build]
-    E --> F[Computer object]
+    A["new Computer.Builder()"] --> B["setCPU(i7)"]
+    B --> C["setRAM(16GB)"]
+    C --> D["setStorage(512GB SSD)"]
+    D --> E[".build()"]
+    E --> F["Computer object"]
     
     style E fill:#090,stroke:#090
 ```
@@ -398,7 +416,7 @@ flowchart LR
     Adapter -->|translate call| Gateway2[CreditCard: charge()]
     Adapter -->|translate call| Gateway3[Stripe: pay()]
     
-    note[Adapter translates common interface\nto each gateway's specific API]
+    note["Adapter translates common interface to each gateway specific API"]
 ```
 
 ---
@@ -438,7 +456,7 @@ classDiagram
 flowchart LR
     A[EmailNotifier] -->|wrapped by| B[SMSDecorator]
     B -->|wrapped by| C[SlackDecorator]
-    C -->|called: send'Alert'| B
+    C -->|"called: send(Alert)"| B
     B -->|sends SMS + delegates to| A
     A -->|sends Email|
     
@@ -682,7 +700,7 @@ flowchart TD
         C
     end
     
-    note["Controller handles input & logic<br/>Model holds data<br/>View handles presentation"]
+    note["Controller handles input and logic - Model holds data - View handles presentation"]
 ```
 
 ---
@@ -718,7 +736,7 @@ flowchart LR
     style B fill:#090,stroke:#090
     style C fill:#069,stroke:#069
     
-    note["Dependency Injection: 'Don't create, receive it'"]
+    note["Dependency Injection: Dont create it, receive it"]
     note["Benefits: Loose coupling, easier testing (mocks)"]
 ```
 
