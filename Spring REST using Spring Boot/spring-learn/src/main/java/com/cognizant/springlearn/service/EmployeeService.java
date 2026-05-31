@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,19 +17,16 @@ public class EmployeeService {
     @Autowired
     private EmployeeDao employeeDao;
 
-    @Transactional
     public List<Employee> getAllEmployees() {
         LOGGER.debug("Start");
         return employeeDao.getAllEmployees();
     }
 
-    @Transactional
     public Employee updateEmployee(Employee employee) {
         LOGGER.debug("Start");
         return employeeDao.updateEmployee(employee);
     }
 
-    @Transactional
     public void deleteEmployee(int id) {
         LOGGER.debug("Start");
         employeeDao.deleteEmployee(id);
