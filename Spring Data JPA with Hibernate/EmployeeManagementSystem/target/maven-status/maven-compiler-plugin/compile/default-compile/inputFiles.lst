@@ -1,0 +1,10 @@
+/Users/jattu/Desktop/Digital-Nurture-JavaFSE/Spring Data JPA with Hibernate/EmployeeManagementSystem/src/main/java/com/ems/EmployeeManagementSystemApplication.java
+/Users/jattu/Desktop/Digital-Nurture-JavaFSE/Spring Data JPA with Hibernate/EmployeeManagementSystem/src/main/java/com/ems/controller/DepartmentController.java
+/Users/jattu/Desktop/Digital-Nurture-JavaFSE/Spring Data JPA with Hibernate/EmployeeManagementSystem/src/main/java/com/ems/controller/EmployeeController.java
+/Users/jattu/Desktop/Digital-Nurture-JavaFSE/Spring Data JPA with Hibernate/EmployeeManagementSystem/src/main/java/com/ems/dto/EmployeeProjection.java
+/Users/jattu/Desktop/Digital-Nurture-JavaFSE/Spring Data JPA with Hibernate/EmployeeManagementSystem/src/main/java/com/ems/entity/Department.java
+/Users/jattu/Desktop/Digital-Nurture-JavaFSE/Spring Data JPA with Hibernate/EmployeeManagementSystem/src/main/java/com/ems/entity/Employee.java
+/Users/jattu/Desktop/Digital-Nurture-JavaFSE/Spring Data JPA with Hibernate/EmployeeManagementSystem/src/main/java/com/ems/repository/DepartmentRepository.java
+/Users/jattu/Desktop/Digital-Nurture-JavaFSE/Spring Data JPA with Hibernate/EmployeeManagementSystem/src/main/java/com/ems/repository/EmployeeRepository.java
+/Users/jattu/Desktop/Digital-Nurture-JavaFSE/Spring Data JPA with Hibernate/EmployeeManagementSystem/src/main/java/com/ems/service/DepartmentService.java
+/Users/jattu/Desktop/Digital-Nurture-JavaFSE/Spring Data JPA with Hibernate/EmployeeManagementSystem/src/main/java/com/ems/service/EmployeeService.java

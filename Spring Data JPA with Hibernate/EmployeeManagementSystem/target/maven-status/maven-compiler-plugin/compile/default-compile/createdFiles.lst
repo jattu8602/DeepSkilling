@@ -1,0 +1,12 @@
+com/ems/service/DepartmentService.class
+com/ems/EmployeeManagementSystemApplication.class
+com/ems/service/EmployeeService.class
+com/ems/repository/DepartmentRepository.class
+com/ems/controller/EmployeeController.class
+com/ems/entity/Employee$EmployeeBuilder.class
+com/ems/repository/EmployeeRepository.class
+com/ems/entity/Department$DepartmentBuilder.class
+com/ems/controller/DepartmentController.class
+com/ems/entity/Employee.class
+com/ems/entity/Department.class
+com/ems/dto/EmployeeProjection.class
