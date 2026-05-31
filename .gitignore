@@ -1,0 +1,6 @@
+React/project/node_modules
+React/project/build
+React/project/dist
+React/project/.env
+React/project/.env.local
+React/project/.env.development
